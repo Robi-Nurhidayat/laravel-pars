@@ -1,0 +1,10 @@
+$color : 'red';
+
+
+.list-group-item {
+    color: $color;
+
+    a {
+        color: $color;
+    }
+}
