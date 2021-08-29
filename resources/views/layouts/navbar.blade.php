@@ -8,6 +8,7 @@
         <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
         <a class="nav-link" href="{{route('tasks.index')}}">Task</a>
         <a class="nav-link" href="{{route('pricing.index')}}">Pricing</a>
+        <a class="nav-link" href="{{route('login')}}">Login</a>
         <a class="nav-link" href="{{route('register')}}">Register</a>
       </div>
     </div>
