@@ -8,8 +8,17 @@
         <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
         <a class="nav-link" href="{{route('tasks.index')}}">Task</a>
         <a class="nav-link" href="{{route('pricing.index')}}">Pricing</a>
+        @guest
         <a class="nav-link" href="{{route('login')}}">Login</a>
         <a class="nav-link" href="{{route('register')}}">Register</a>
+        @else
+        <a class="nav-link" href="#">{{Auth::user()->username}}</a>
+        <form action="{{route('logout')}}" method="POST" class="mt-1">
+        @csrf
+        <button type="sumbit" class="btn btn-primary btn-sm">Logout</button>
+        </form>
+        @endguest
+
       </div>
     </div>
   </nav>

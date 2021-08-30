@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TaskController;
@@ -28,14 +29,19 @@ Route::get('/', function () {
 // Route::get('/tasks/delete/{task}', [TaskController::class, 'destroy'])->name('tasks.delete');
 
 
-Route::resource('tasks', TaskController::class);
+
+
+Route::middleware('auth')->group(function () {
+    Route::resource('tasks', TaskController::class);
 
 // pricing route
 
-Route::resource('pricing', PricingController::class);
+    Route::resource('pricing', PricingController::class);
+    Route::post('logout', [LogoutController::class,'logout'])->name('logout');
+});
 
 Route::get('register', [RegisterController::class, 'create'])->name('register');
 Route::post('register', [RegisterController::class, 'store'])->name('register');
 
-Route::get('login', [LoginController::class, 'create'])->name('login');
+Route::get('login', [LoginController::class, 'create'])->name('login.create');
 Route::post('login', [LoginController::class, 'store'])->name('login');
